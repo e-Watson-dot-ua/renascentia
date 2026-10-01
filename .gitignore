@@ -1,0 +1,55 @@
+# ---------- Секрети ----------
+.env
+.env.*
+!.env.example
+
+# ---------- Python / uv ----------
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyright/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# ---------- .NET (projects/mcp-tabula-cs) ----------
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+
+# ---------- Редактори та ОС ----------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Claude Code ----------
+# Особисті налаштування; спільні (.claude/settings.json, skills, commands) комітяться
+.claude/settings.local.json
+
+# ---------- Дані ----------
+# Синтетичні зразки в data/synthetic/ комітяться; великі корпуси та згенеровані артефакти — ні
+data/corpus/
+data/cache/
+data/embeddings/
+*.parquet
+*.sqlite
+*.db
+
+# ---------- Логи та результати ----------
+*.log
+evals/results/
+projects/*/evals/results/

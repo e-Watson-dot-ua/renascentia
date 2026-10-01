@@ -1,0 +1,53 @@
+# uv workspace root — the analogue of a .sln: builds nothing itself,
+# just ties together the packages in projects/* and sets shared rules.
+
+[project]
+name = "renascentia"
+version = "0.1.0"
+description = "A learning path into AI engineering: Python, Claude API, RAG, agents, MCP"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.uv]
+package = false   # the root is not a package, only a workspace
+
+[tool.uv.workspace]
+members = ["projects/*"]
+exclude = ["projects/mcp-tabula-cs"]   # the C# project lives outside uv
+
+# Development tools shared by all packages.
+# Installed via `uv sync` (the dev group is included by default).
+[dependency-groups]
+dev = [
+    "ruff>=0.8",
+    "pyright>=1.1.390",
+    "pytest>=8.3",
+]
+
+# ---------- ruff: linter + formatter (analogue of analyzers + dotnet format) ----------
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E", "F",   # basic errors (pycodestyle, pyflakes)
+    "I",        # import sorting
+    "B",        # common bugs (bugbear)
+    "UP",       # modern Python syntax
+    "SIM",      # simplifications
+    "RUF",      # ruff's own rules
+]
+
+# ---------- pyright: static type checking ----------
+[tool.pyright]
+include = ["projects"]
+exclude = ["projects/mcp-tabula-cs", "**/.venv", "**/__pycache__"]
+typeCheckingMode = "strict"
+pythonVersion = "3.13"
+
+# ---------- pytest ----------
+[tool.pytest.ini_options]
+# importlib avoids conflicts when several packages have tests/ with identical file names
+addopts = "--import-mode=importlib -q"
+testpaths = ["projects"]
