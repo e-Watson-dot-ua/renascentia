@@ -1,0 +1,23 @@
+{
+  // Ruff formats and fixes Python files on save, with the settings from pyproject.toml.
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+
+  // Pylance reads [tool.pyright] from pyproject.toml (strict mode).
+  // Check all files, not only the open ones, as `uv run pyright` does.
+  "python.analysis.diagnosticMode": "workspace",
+
+  // Test Explorer uses pytest with the settings from pyproject.toml.
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true
+}
