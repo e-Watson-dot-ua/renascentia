@@ -24,7 +24,12 @@ uv sync --all-packages
 
 uv reads `.python-version` and installs Python 3.14 if it is not on the machine.
 
+Run all `uv` commands in this guide from the repository root (`renascentia/`), not from a package folder.
+The workspace has one virtual environment (`.venv`) and one lock file (`uv.lock`) for all packages.
+
 ## 3. Run the checks
+
+From the repository root:
 
 ```bash
 uv run ruff check
@@ -38,7 +43,7 @@ The CI workflow (`.github/workflows/ci.yml`) runs the same checks on each push a
 ## 4. Add a new package
 
 1. Copy `templates/python-project/` to `projects/<name>/`.
-2. Follow the steps in the `README.md` of the template.
+2. Follow the steps in `projects/<name>/README.md`.
 
 ## Troubleshooting
 

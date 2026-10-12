@@ -27,6 +27,8 @@ Rules for this phase:
 
 ## Commands
 
+Run all commands from the repository root. The workspace has one `.venv` and one `uv.lock`.
+
 ```bash
 uv sync --all-packages           # install all workspace packages + dev tools
 uv run pytest                    # tests of all packages
