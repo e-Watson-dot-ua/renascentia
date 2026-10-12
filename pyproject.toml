@@ -24,7 +24,7 @@ dev = [
     "pytest>=8.3",
 ]
 
-# ---------- ruff: linter + formatter (analogue of analyzers + dotnet format) ----------
+# ruff: linter + formatter (analogue of analyzers + dotnet format)
 [tool.ruff]
 line-length = 100
 target-version = "py313"
@@ -39,14 +39,14 @@ select = [
     "RUF",      # ruff's own rules
 ]
 
-# ---------- pyright: static type checking ----------
+# pyright: static type checking
 [tool.pyright]
 include = ["projects"]
 exclude = ["projects/mcp-tabula-cs", "**/.venv", "**/__pycache__"]
 typeCheckingMode = "strict"
 pythonVersion = "3.13"
 
-# ---------- pytest ----------
+# pytest
 [tool.pytest.ini_options]
 # importlib avoids conflicts when several packages have tests/ with identical file names
 addopts = "--import-mode=importlib -q"

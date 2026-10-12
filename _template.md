@@ -1,55 +1,59 @@
-# Фаза N · Тиждень N · YYYY-MM-DD — YYYY-MM-DD
+# Phase N · Week N · YYYY-MM-DD — YYYY-MM-DD
 
-<!-- Ім'я файлу: YYYY-Www.md (наприклад, 2026-W41.md). Заповнювати в вечір рев'ю. -->
+<!-- File name: YYYY-Www.md (for example, 2026-W41.md). Fill in on the review evening. -->
 
-**Годин за тиждень:** 0 · **Вечорів:** 0
+**Hours this week:** 0 · **Evenings:** 0
 
-## Мета тижня
+## Goal of the week
 
-<!-- Скопіювати з таблиці фази в плані: теорія + проєкт -->
+<!-- Copy from the phase table in the plan: theory + project -->
 
-- Теорія:
-- Проєкт:
+- Theory:
+- Project:
 
-## Що вивчив
+## What I learned
 
-<!-- Своїми словами, 3–6 пунктів. Якщо не можу пояснити без підглядання — не засвоєно. -->
+<!-- In my own words, 3–6 items. If I cannot explain it without a look at the notes, I did not learn it. -->
 
 -
 
 ## C# → Python
 
-<!-- Найцінніший розділ: де аналогія працює, а де ламається -->
+<!-- The most valuable section: where the analogy works and where it breaks -->
 
-| У C# я звик | У Python виявилось | Висновок |
-| --- | --- | --- |
-|  |  |  |
+```text
+┌────────────────────┬─────────────────────────┬────────────┐
+│ In C# I am used to │ In Python it turned out │ Conclusion │
+├────────────────────┼─────────────────────────┼────────────┤
+│                    │                         │            │
+└────────────────────┴─────────────────────────┴────────────┘
+```
 
-## Проєкт
+## Project
 
-- Зроблено:
-- Коміти / PR:
-- Не вийшло або відкладено:
+- Done:
+- Commits / PRs:
+- Did not work or postponed:
 
-## Проблеми та як розв'язав
+## Problems and how I solved them
 
-<!-- Помилка → причина → рішення. Через місяць це буде найкорисніша частина журналу. -->
-
--
-
-## Що писав я, а що Claude
-
-<!-- Чесно: чи можу пояснити кожен файл і переписати ключову частину без допомоги? -->
+<!-- Error → cause → solution. In a month, this will be the most useful part of the journal. -->
 
 -
 
-## Теми для квізу
+## What I wrote and what Claude wrote
 
-<!-- Скопіювати в чат: "квіз по тижню N фази M: ..." -->
+<!-- Honestly: can I explain each file and write the key part again without help? -->
 
 -
 
-## Наступний тиждень
+## Quiz topics
+
+<!-- Copy into the chat: "quiz on week N of phase M: ..." -->
+
+-
+
+## Next week
 
 - [ ]
 - [ ]

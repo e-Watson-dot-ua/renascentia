@@ -1,58 +1,53 @@
 # Renascentia
 
-Навчальний шлях в AI engineering: Python → Claude API → RAG → агенти й MCP → production.
-Автор — досвідчений C#/.NET-розробник (ASP.NET Core, Clean Architecture, власний CQRS,
-Dapper, PostgreSQL, Angular), який вивчає Python. Мета репозиторію — навички й портфоліо,
-а не швидкий результат. Спілкування українською.
+A learning path into AI engineering: Python → Claude API → RAG → agents and MCP → production.
+The author is an experienced C#/.NET developer (ASP.NET Core, Clean Architecture, custom CQRS,
+Dapper, PostgreSQL, Angular) who studies Python. The goal of the repository is skills and a portfolio,
+not a fast result. The main interaction language is English.
 
-## Поточна фаза: 1 — Python для C#-розробника
+## Current phase: 1 — Python for a C# developer
 
-Правила для цієї фази:
-- НЕ пиши код у `projects/*/src/` і `projects/*/tests/`, якщо я прямо не попросив.
-  Замість готового коду — підказка, напрям або питання, яке наведе мене на рішення.
-- Роби рев'ю мого коду: що неідіоматично для Python, чому, як було б ідіоматично.
-- Пояснюй через аналогії з C#/.NET і окремо наголошуй, де аналогія ламається
-  (mutability, asyncio, структурна типізація, декоратори).
-- Обв'язку можна генерувати без обмежень: CI, Dockerfile, docker-compose, конфіги, README-скелети.
+Rules for this phase:
+- Do NOT write code in `projects/*/src/` and `projects/*/tests/` unless I ask for it directly.
+  Instead of ready code, give a hint, a direction, or a question that leads me to the solution.
+- Review my code: what is not idiomatic for Python, why, and what the idiomatic version is.
+- Explain through analogies with C#/.NET, and state clearly where the analogy breaks
+  (mutability, asyncio, structural typing, decorators).
+- You can generate scaffolding without limits: CI, Dockerfile, docker-compose, configs, README skeletons.
 
-<!-- При переході на фазу 2+ замінити блок вище на:
-## Поточна фаза: N — <назва>
-- AI-частину (промпти, схеми structured outputs, evals, chunking, retrieval, дизайн
-  MCP-інструментів) пишу сам; ти робиш рев'ю і пропонуєш альтернативи.
-- Скелети FastAPI, Docker, міграції, шаблонні тести — можеш генерувати.
--->
+## Structure
 
-## Структура
+- `projects/<name>/` — uv workspace packages (src layout, own `pyproject.toml`, `tests/`)
+  - `docx-lint` (phase 1), `doc-extract` (2), `doc-search` (3), `doc-agent` (4)
+  - `mcp-tabula-cs` — a C# project, outside the uv workspace
+- `templates/python-project/` — the template for new packages
+- `docs/journal/` — weekly notes (template: `_template.md`); do not edit without a request
+- `docs/adr/` — architecture decisions
+- `data/synthetic/` — only synthetic or open data
 
-- `projects/<name>/` — пакети uv workspace (src-layout, власний `pyproject.toml`, `tests/`)
-  - `docx-lint` (фаза 1), `doc-extract` (2), `doc-search` (3), `doc-agent` (4)
-  - `mcp-tabula-cs` — C#-проєкт, поза uv workspace
-- `templates/python-project/` — шаблон для нових пакетів
-- `docs/journal/` — тижневі нотатки (шаблон: `_template.md`); не редагуй без прохання
-- `docs/adr/` — архітектурні рішення
-- `data/synthetic/` — лише синтетичні або відкриті дані
-
-## Команди
+## Commands
 
 ```bash
-uv sync --all-packages           # встановити всі пакети workspace + dev-інструменти
-uv run pytest                    # тести всіх пакетів
-uv run ruff check --fix          # лінтер
-uv run ruff format               # форматування
-uv run pyright                   # перевірка типів (strict)
-uv init --lib projects/<name>    # новий пакет у workspace
+uv sync --all-packages           # install all workspace packages + dev tools
+uv run pytest                    # tests of all packages
+uv run ruff check --fix          # linter
+uv run ruff format               # formatting
+uv run pyright                   # type checking (strict)
+uv init --lib projects/<name>    # new package in the workspace
 ```
 
-## Конвенції
+## Conventions
 
-- Python ≥ 3.13, повні type hints; pyright strict без помилок — обов'язково.
-- Pydantic v2 для моделей даних і валідації; dataclasses — для простих внутрішніх структур.
-- pytest: fixtures замість setup-класів, `parametrize` для наборів випадків.
-- Доступ до PostgreSQL — psycopg 3 і сирий SQL (без ORM, як Dapper).
-- Секрети лише в `.env` (у .gitignore); у коді — читання змінних середовища.
+- Python ≥ 3.13, full type hints; pyright strict with no errors is mandatory.
+- Pydantic v2 for data models and validation; dataclasses for simple internal structures.
+- pytest: fixtures instead of setup classes, `parametrize` for sets of cases.
+- PostgreSQL access: psycopg 3 and raw SQL (no ORM, like Dapper).
+- Secrets only in `.env` (in .gitignore); in code, read environment variables.
+- Formatting: follow the user-level `box-tables` skill (no long dash dividers;
+  tables as aligned box-drawing tables in a `text` code block).
 
-## Жорсткі обмеження
+## Hard constraints
 
-- Жодних реальних службових чи військових документів і даних — ні в коді, ні в тестах,
-  ні в промптах, ні в прикладах. Лише синтетичні або публічні.
-- Не коміть `.env`, API-ключі, великі корпуси даних.
+- No real official or military documents and data: not in code, not in tests,
+  not in prompts, not in examples. Only synthetic or public data.
+- Do not commit `.env`, API keys, or large data corpora.
