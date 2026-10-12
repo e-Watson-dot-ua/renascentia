@@ -33,12 +33,12 @@ uv run pytest                    # tests of all packages
 uv run ruff check --fix          # linter
 uv run ruff format               # formatting
 uv run pyright                   # type checking (strict)
-uv init --lib projects/<name>    # new package in the workspace
+cp -r templates/python-project projects/<name>   # new package (then see its README)
 ```
 
 ## Conventions
 
-- Python ≥ 3.13, full type hints; pyright strict with no errors is mandatory.
+- Python ≥ 3.14, full type hints; pyright strict with no errors is mandatory.
 - Pydantic v2 for data models and validation; dataclasses for simple internal structures.
 - pytest: fixtures instead of setup classes, `parametrize` for sets of cases.
 - PostgreSQL access: psycopg 3 and raw SQL (no ORM, like Dapper).

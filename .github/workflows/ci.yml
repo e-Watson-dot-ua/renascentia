@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      # uv reads .python-version and installs the same Python as on the dev machines.
+      - name: Install packages
+        run: uv sync --all-packages --locked
+
+      - name: Lint
+        run: uv run ruff check
+
+      - name: Format
+        run: uv run ruff format --check
+
+      - name: Type check
+        run: uv run pyright
+
+      # Exit code 5 means "no tests collected". Accept it until the first package has tests.
+      - name: Test
+        run: uv run pytest || [ $? -eq 5 ]
